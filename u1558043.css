@@ -1,0 +1,102 @@
+/* ==========================================
+   學號：u1558043
+   作業：外部 CSS 樣式表 (純 CSS 動畫與排版)
+   ========================================== */
+
+/* 全域基礎設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+header p {
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+/* 圖片展覽區排版 */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 圖片外層連結卡片 */
+.image-box {
+    display: block;
+    width: 260px;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-box img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.caption {
+    padding: 12px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   規則 4：滑鼠移動到圖片上，圖片會「左右搖晃晃動」
+   ========================================== */
+
+/* 定義搖晃動畫關鍵幀 */
+@keyframes shakeAnimation {
+    0% { transform: rotate(0deg) scale(1.05); }
+    20% { transform: rotate(-5deg) scale(1.05); }
+    40% { transform: rotate(5deg) scale(1.05); }
+    60% { transform: rotate(-3deg) scale(1.05); }
+    80% { transform: rotate(3deg) scale(1.05); }
+    100% { transform: rotate(0deg) scale(1.05); }
+}
+
+/* 當滑鼠移入時，觸發連續搖晃動畫與卡片浮起 */
+.image-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+}
+
+.image-box:hover img {
+    /* 觸發搖晃動畫，持續 0.5 秒並無限循環搖晃 */
+    animation: shakeAnimation 0.5s infinite ease-in-out;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #888;
+    font-size: 0.9rem;
+}
